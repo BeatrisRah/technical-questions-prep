@@ -46,4 +46,28 @@ function firstUniqueChar(str){
     return [-1]
     
 }
-console.log(firstUniqueChar("loveleetcode")) // "c"
+// console.log(firstUniqueChar("loveleetcode")) 
+// "c"
+
+function isPalindrome(str){
+    const newStr = str.replace(/[^a-zA-Z0-9]/g, '')
+    const reverseStr = newStr.split('').reverse().join('')
+    
+    
+    for(let i = 0; i < reverseStr.length; i++){
+        const currLetter = reverseStr[i]
+        if(currLetter.toLowerCase() !== newStr[i].toLowerCase()){
+            return false;
+        }
+    }
+
+    return true;
+    
+    
+}
+
+
+// console.log(isPalindrome("A man, a plan, a canal: Panama"));
+; // true
+// Check if the given string is a palindrome (reads the same backward as forward), 
+// ignoring case and non-alphanumeric characters.
