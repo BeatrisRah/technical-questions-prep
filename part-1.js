@@ -196,5 +196,51 @@ function groupAnagrams(words) {
 // groupAnagrams(["bat", "tab", "tap", "pat"]);
 // // [["bat", "tab"], ["tap", "pat"]]
 
-groupAnagrams(["listen", "silent", "enlist", "google", "gooegl"]);
+// groupAnagrams(["listen", "silent", "enlist", "google", "gooegl"]);
 // [["listen", "silent", "enlist"], ["google", "gooegl"]]
+
+class LRUCache {
+    constructor(capacity) { 
+        this.capacityLength = capacity;
+        this.capacity = {};
+        this.lastUsed = null; 
+    }
+    get(key) { 
+        if(this.capacity[key]){
+            return this.capacity[key]
+        } else{
+            return -1;
+        }
+    }
+    put(key, value) {
+        if(this.capacity[key]){
+            this.lastUsed = key;
+            return this.capacity[key] = value;
+        }
+
+        if(Object.keys(this.capacity).length + 1 > this.capacityLength){
+            delete this.capacity[this.lastUsed];
+            return 'Evicted' + ' ' + this.lastUsed;
+        }
+        this.capacity[key] = value;
+        this.lastUsed = key;
+    }
+  }
+
+// Design a data structure for a Least Recently Used (LRU) cache.
+// It should support:
+
+// get(key) – Return the value if the key exists, else -1.
+
+// put(key, value) – Insert or update the key-value pair. If the cache exceeds capacity, remove the least recently used item.
+
+const cache = new LRUCache(2);
+console.log(cache.put(1, 1));
+console.log(cache.put(2, 2));
+console.log(cache.get(1));
+console.log(cache.put(3, 3));
+console.log(cache.get(2));
+
+      // returns 1
+   // evicts key 2
+;  
