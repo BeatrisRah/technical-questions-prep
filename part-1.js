@@ -146,4 +146,55 @@ function deepClone(obj){
     return clone(obj)
 }
 
-console.log(deepClone({ a: 1, b: { c: 2 } }));
+// console.log(deepClone({ a: 1, b: { c: 2 } }));
+
+function groupAnagrams(words) { 
+// Problem Description:
+// Given an array of strings, group the anagrams together.
+
+// Input: An array of lowercase strings.
+// Output: A 2D array where each sub-array contains grouped anagrams.
+
+// Constraints:
+
+// 1 <= words.length <= 10^4
+
+// Strings contain only lowercase English letters.
+
+// Return the groups in any order.
+    const result = {}
+
+    // const helper = (word, i) => { //word = arraY
+    //     const a = [word]
+
+    //     for(let j = i + 1; j < words.length; j++){
+            
+    //         const curword = words[j]
+
+    //         if(curword.length !== word.length) continue;            
+
+    //         if(Array.from(curword).sort().join() === Array.from(word).sort().join()) a.push(curword)
+    //     }
+    //     return a;
+
+    // }
+
+    for(let i = 0; i < words.length; i++){
+        const sorted = Array.from(words[i]).sort().join('')
+        if(!result[sorted]){
+            result[sorted] = [words[i]]
+        } else {
+            result[sorted].push(words[i])
+        }
+    }
+
+    console.log(Object.values(result));
+    
+
+}
+
+// groupAnagrams(["bat", "tab", "tap", "pat"]);
+// // [["bat", "tab"], ["tap", "pat"]]
+
+groupAnagrams(["listen", "silent", "enlist", "google", "gooegl"]);
+// [["listen", "silent", "enlist"], ["google", "gooegl"]]
