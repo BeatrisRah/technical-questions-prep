@@ -88,3 +88,33 @@ function removeDuplicates(arr){
 }
 // console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
 ; // [1, 2, 3, 4]
+
+function flattenArray(arr) { 
+    const res = []
+    const helper = (inputArr) => {
+        for (let i = 0; i < inputArr.length; i++){
+            
+            if(typeof inputArr[i] === 'object'){
+                helper(inputArr[i])
+            } else{
+                res.push(inputArr[i])
+            }
+        }
+
+        return res;
+    }
+
+    return helper(arr);
+}
+
+console.log(flattenArray([1, [2, [3, 4]], 5]));
+
+
+// Input: [1, [2, [3, 4]], 5]
+// Output: [1, 2, 3, 4, 5]
+
+// Constraints:
+
+// Array may be deeply nested.
+
+// No usage of flat(Infinity) allowed.
