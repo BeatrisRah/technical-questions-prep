@@ -66,8 +66,25 @@ function isPalindrome(str){
     
 }
 
-
 // console.log(isPalindrome("A man, a plan, a canal: Panama"));
 ; // true
 // Check if the given string is a palindrome (reads the same backward as forward), 
 // ignoring case and non-alphanumeric characters.
+
+
+function removeDuplicates(arr){
+    const res = []
+
+    for (let i = 0; i < arr.length; i++){
+        const currElement = arr[i]
+
+        if(!res.includes(currElement)){
+            res.push(currElement)
+        }
+    }
+
+    return res;
+
+}
+// console.log(removeDuplicates([1, 2, 2, 3, 4, 4]));
+; // [1, 2, 3, 4]
