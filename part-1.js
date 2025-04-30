@@ -107,14 +107,43 @@ function flattenArray(arr) {
     return helper(arr);
 }
 
-console.log(flattenArray([1, [2, [3, 4]], 5]));
-
-
+// console.log(flattenArray([1, [2, [3, 4]], 5]));
 // Input: [1, [2, [3, 4]], 5]
 // Output: [1, 2, 3, 4, 5]
-
 // Constraints:
-
 // Array may be deeply nested.
-
 // No usage of flat(Infinity) allowed.
+
+function debounce(fn, delay) { 
+    // Create a debounce utility that delays execution of fn 
+    // until after delay milliseconds have passed since the last time it was called.
+    let id;
+    return function(...args){
+        clearTimeout(id)
+        id = setTimeout(() => fn(...args), delay)
+    }
+
+}
+
+// const log = debounce(console.log, 100);
+// log('hello')
+
+function deepClone(obj){
+
+    const clone = (input) => {
+        if(input === null || typeof input !== 'object'){
+            return input;
+        }
+
+        const initalVal = Array.isArray(input) ? [] : {}
+
+        return Object.keys(input).reduce((acc, key) => {
+            acc[key] = clone(input[key])
+            return acc;
+        }, initalVal)
+    }
+
+    return clone(obj)
+}
+
+console.log(deepClone({ a: 1, b: { c: 2 } }));
