@@ -17,4 +17,26 @@ function singleNonDuplicate(nums) {
         }
     }
 }
-console.log(singleNonDuplicate([1,1,2,3,3,4,4,8,8]));
+// console.log(singleNonDuplicate([1,1,2,3,3,4,4,8,8]));
+
+
+function tupleSameProduct(nums){
+    const product_count = new Map()
+
+    for (let i = 0; i < nums.length; i++){
+        for (let j = 0; j < i; j++ ){
+            const product = nums[i] * nums[j]
+            product_count.set(product, (product_count.get(product) ?? 0) + 1 )
+
+        }
+    }
+
+    let res = 0;
+    for (const [_, count] of product_count){
+        res += (count * (count - 1)) / 2
+    }
+
+    return res << 3
+
+}
+console.log(tupleSameProduct([1,2,4,5,10]));
