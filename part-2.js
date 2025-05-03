@@ -41,12 +41,18 @@ function tupleSameProduct(nums){
 }
 // console.log(tupleSameProduct([1,2,4,5,10]));
 
-function removeOccurrences(string, part){
-    let newString = string;
-    while(newString.includes(part)){
-        newString = newString.replace(part, '')
+function removeOccurrences(s, part){
+    let news = ''
+    
+    for (let i = 0; i < s.length; i++){
+        news += s[i]
+        const last = news.slice((news.length - part.length), news.length)
+        if(last === part){
+            
+            news = news.slice(0, (news.length - part.length))
+        }
     }
 
-    return newString;
+    return news;
 }
 console.log(removeOccurrences('axxxxyyyyb', 'xy'));
