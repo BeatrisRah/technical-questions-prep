@@ -237,7 +237,9 @@ class LRUCache {
 const cache = new LRUCache(2);
 console.log(cache.put(1, 1));
 console.log(cache.put(2, 2));
-console.log(cache.get(1));
+const param = cache.get(1)
+console.log(param);
+
 console.log(cache.put(3, 3));
 console.log(cache.get(2));
 
