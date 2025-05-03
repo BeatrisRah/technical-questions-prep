@@ -39,4 +39,14 @@ function tupleSameProduct(nums){
     return res << 3
 
 }
-console.log(tupleSameProduct([1,2,4,5,10]));
+// console.log(tupleSameProduct([1,2,4,5,10]));
+
+function removeOccurrences(string, part){
+    let newString = string;
+    while(newString.includes(part)){
+        newString = newString.replace(part, '')
+    }
+
+    return newString;
+}
+console.log(removeOccurrences('axxxxyyyyb', 'xy'));
