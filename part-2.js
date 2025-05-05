@@ -58,25 +58,32 @@ function removeOccurrences(s, part){
 // console.log(removeOccurrences('axxxxyyyyb', 'xy'));
 
 function lengthOfLongestSubstring(s){
-    const res = []
-    let subStr = ''
+    let str = ''
+    const lenghsts = [] // Nums
 
-    for (let i = 0; i < s.length; i++){
-        const currCar = s[i]
-        if(subStr.indexOf(currCar) !== -1){
-            res.push(subStr)
-            subStr = currCar
-        } else{
-            subStr += currCar;
-        }
+    if(s.length === 0){
+        return 0
     }
 
-    res.push(subStr)
+    for (let i = 0; i < s.length; i++){
+        const currChar = s[i]
 
-    const biggest = Math.max(...(res.map(el => el.length)));
-    console.log(biggest);
+        if(str.indexOf(currChar) !== -1){
+            lenghsts.push(str.length)
+            str = str.slice(str.indexOf(currChar) + 1, str.length)
+            
+        }
+        str += currChar
+        
+    }
+    lenghsts.push(str.length)
     
+    return Math.max(...lenghsts)
+        
     
 }
 
-lengthOfLongestSubstring('dvdf')
+console.log(lengthOfLongestSubstring(" "));
+
+//dvdf
+//abcabcbb
