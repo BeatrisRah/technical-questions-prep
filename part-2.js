@@ -55,4 +55,28 @@ function removeOccurrences(s, part){
 
     return news;
 }
-console.log(removeOccurrences('axxxxyyyyb', 'xy'));
+// console.log(removeOccurrences('axxxxyyyyb', 'xy'));
+
+function lengthOfLongestSubstring(s){
+    const res = []
+    let subStr = ''
+
+    for (let i = 0; i < s.length; i++){
+        const currCar = s[i]
+        if(subStr.indexOf(currCar) !== -1){
+            res.push(subStr)
+            subStr = currCar
+        } else{
+            subStr += currCar;
+        }
+    }
+
+    res.push(subStr)
+
+    const biggest = Math.max(...(res.map(el => el.length)));
+    console.log(biggest);
+    
+    
+}
+
+lengthOfLongestSubstring('dvdf')
