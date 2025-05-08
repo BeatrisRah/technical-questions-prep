@@ -31,4 +31,27 @@ function longestPalindrome(s){
     
     
 }
-console.log(longestPalindrome("a"));
+// console.log(longestPalindrome("a"));
+
+function reverseInt(x){
+
+    let isPositive = true;
+    let intStr = x.toString()
+
+    
+
+    if(intStr[0] === '-'){
+        intStr = intStr.slice(1, intStr.length)
+        intStr = -Number(intStr.split('').reverse().join(''))
+    } else {
+        intStr = Number(intStr.split('').reverse().join(''))
+    }
+
+    if (intStr > 2147483647  || intStr < -2147483648){
+        return 0
+    }
+
+    return intStr
+
+}
+console.log(reverseInt(-120));
