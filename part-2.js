@@ -133,5 +133,5 @@ function myAtoi(s) {
 
 }
 
-console.log(myAtoi("   +0 123"));
+// console.log(myAtoi("   +0 123"));
 
