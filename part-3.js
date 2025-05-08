@@ -1,36 +1,34 @@
 function longestPalindrome(s){
-    let currString = '';
-    const res = []
-    if(s.length >= 1000){
-        return
-    }
+    let res = ''
+    let resLen = 0;
 
-    if(s.length > 1){
-        
-        for(let i = 0; i < s.length; i++){
-    
-            for (let j = i; j < s.length; j++){
-                const currentLetter = s[j]
-                currString += currentLetter;
-                // console.log(currString);
-                
-    
-                if(currString.split('').reverse().join('') === currString){
-                    res.push(currString)
-                }
+    for (let i = 0; i < s.length; i++){
+        let [l, r] = [i , i]
+
+        while(l >= 0 && r < s.length && s[l] === s[r]){
+            if (r - l + 1 > resLen){
+                res = s.slice(l , r+ 1)
+                resLen = r - l + 1;
             }
-            currString = ''
+            l -= 1;
+            r += 1;
         }
-    
-        return res.sort(
-            function (a, b) {
-                return b.length - a.length;
+
+        l = i;
+        r = i+ 1;
+        while(l >= 0 && r < s.length && s[l] === s[r]){
+            if (r - l + 1 > resLen){
+                res = s.slice(l , r+ 1)
+                resLen = r - l + 1;
             }
-        )[0];
-    } else{
-        return s;
+            l -= 1;
+            r += 1;
+        }
     }
 
+    return res;
+
+    
     
 }
-console.log(longestPalindrome("ac"));
+console.log(longestPalindrome("a"));
