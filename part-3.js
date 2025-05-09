@@ -34,11 +34,8 @@ function longestPalindrome(s){
 // console.log(longestPalindrome("a"));
 
 function reverseInt(x){
-
-    let isPositive = true;
     let intStr = x.toString()
 
-    
 
     if(intStr[0] === '-'){
         intStr = intStr.slice(1, intStr.length)
@@ -54,4 +51,31 @@ function reverseInt(x){
     return intStr
 
 }
-console.log(reverseInt(-120));
+// console.log(reverseInt(-120));
+
+
+function convertZigZag(s, numRows){
+    if (numRows === 1 || s.length <= numRows) return s;
+    let currRow = 0;
+    let goingDown = false;
+    const res = Array(numRows).fill().map(() => []);
+
+    
+    for (let i = 0; i < s.length; i++) {
+        res[currRow].push(s[i]);
+
+        if (currRow === 0 || currRow === numRows - 1) {
+            goingDown = !goingDown;
+        }
+
+        currRow += goingDown ? 1 : -1;
+    }
+
+    return res.map(row => row.join('')).join('');
+    
+}
+
+//PAHNAPLSIIGYIR
+//PAHNAPLSIIGYIR
+console.log(convertZigZag('PAYPALISHIRING', 3));
+
