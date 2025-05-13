@@ -77,5 +77,25 @@ function convertZigZag(s, numRows){
 
 //PAHNAPLSIIGYIR
 //PAHNAPLSIIGYIR
-console.log(convertZigZag('PAYPALISHIRING', 3));
+// console.log(convertZigZag('PAYPALISHIRING', 3));
+
+
+function maxArea(height){
+    let [l, r] = [0, height.length - 1]
+    let res = 0
+
+    while (l < r){
+        const area = Math.min(height[l], height[r]) * (r - l);
+        res = Math.max(res, area);
+
+        if(height[l] < height[r]){
+            l++
+        } else{
+            r--
+        }
+    }
+    return res
+    
+}
+console.log(maxArea([1,8,6,2,5,4,8,3,7]));
 
